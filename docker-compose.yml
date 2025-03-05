@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: MyPersonalApp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    restart: always
+
+  backend:
+    image: ${{ secrets.DOCKER_USERNAME }}/springboot-app:latest
+    container_name: springboot_container
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/MyPersonalApp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123456
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    restart: always
+
+  frontend:
+    image: ${{ secrets.DOCKER_USERNAME }}/react-app:latest
+    container_name: react_container
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
