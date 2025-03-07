@@ -15,7 +15,7 @@ services:
     restart: always
 
   backend:
-    image: ${{ secrets.DOCKER_USERNAME }}/springboot-app:latest
+    image: mashiur88/springboot-app:latest
     container_name: springboot_container
     depends_on:
       - postgres
@@ -30,7 +30,7 @@ services:
     restart: always
 
   frontend:
-    image: ${{ secrets.DOCKER_USERNAME }}/react-app:latest
+    image: mashiur88/react-app:latest
     container_name: react_container
     depends_on:
       - backend
