@@ -15,6 +15,7 @@ jobs:
     
     - name: Build Spring Boot JAR
       run: |
+         mvn clean #check
          mvn clean package -DskipTests  # Skip tests if they are failing
          ls -l target/  # Verify the JAR file is generated
 
