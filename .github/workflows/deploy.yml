@@ -39,4 +39,4 @@ jobs:
           docker-compose build --pull
           docker-compose up -d
         EOF        
-          rm -f private_key.pem  # Clean up the PEM key file
+        rm -f private_key.pem  # Clean up the PEM key file
