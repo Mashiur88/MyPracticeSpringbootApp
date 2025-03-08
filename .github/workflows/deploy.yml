@@ -37,20 +37,6 @@ jobs:
           git pull origin main
           docker-compose pull || true
           docker-compose build --pull
-          docker-compose up -d EOF
-        rm -f private_key.pem  # Clean up the PEM key file
-
-#    - name: Install SSH Key
-#      uses: webfactory/ssh-agent@v0.5.4
-#      with:
-#        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-#    - name: SSH into AWS Server and Deploy
-#      run: |
-#        ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.AWS_HOST }} << 'EOF'
-#          cd /home/ubuntu/app
-#          git pull origin main
-#          docker-compose pull
-#          docker-compose down
-#          docker-compose up -d
-#        EOF
+          docker-compose up -d
+        EOF        
+          rm -f private_key.pem  # Clean up the PEM key file
