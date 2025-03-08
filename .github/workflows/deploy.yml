@@ -37,8 +37,7 @@ jobs:
           git pull origin main
           docker-compose pull || true
           docker-compose build --pull
-          docker-compose up -d
-        EOF 
+          docker-compose up -d EOF
         rm -f private_key.pem  # Clean up the PEM key file
 
 #    - name: Install SSH Key
