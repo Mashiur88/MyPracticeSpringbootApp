@@ -46,7 +46,7 @@ public class TaskServiceTest {
         task.setTaskCode("TASK001");
         task.setTaskName("Test Task");
         task.setTaskDescription("This is a test task.");
-        task.setStatusCode("IN_PROGRESS");
+        task.setStatusCode("03");
         task.setStatus("In Progress");
         task.setCompleted(false);
     }
